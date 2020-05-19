@@ -5,6 +5,7 @@ import com.tyjohtech.gol.model.CellState;
 import com.tyjohtech.gol.viewmodel.ApplicationViewModel;
 import com.tyjohtech.gol.viewmodel.BoardViewModel;
 import com.tyjohtech.gol.viewmodel.EditorViewModel;
+import com.tyjohtech.gol.viewmodel.SimulationViewModel;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -30,7 +31,7 @@ public class MainView extends VBox {
 
     private BoardViewModel boardViewModel;
 
-    public MainView(ApplicationViewModel appViewModel, BoardViewModel boardViewModel, EditorViewModel editorViewModel) {
+    public MainView(ApplicationViewModel appViewModel, BoardViewModel boardViewModel, EditorViewModel editorViewModel, SimulationViewModel simulationViewModel) {
         this.boardViewModel = boardViewModel;
         this.editorViewModel = editorViewModel;
 
@@ -43,7 +44,7 @@ public class MainView extends VBox {
 
         this.setOnKeyPressed(this::onKeyPressed);
 
-        Toolbar toolbar = new Toolbar(editorViewModel, appViewModel, boardViewModel);
+        Toolbar toolbar = new Toolbar(editorViewModel, appViewModel, simulationViewModel);
 
         this.infoBar = new InfoBar(editorViewModel);
         this.infoBar.setCursorPosition(0, 0);
