@@ -40,7 +40,7 @@ public class StandardRule implements SimulationRule {
     }
 
     private int countCell(int x, int y, Board board) {
-        if (board.getState(x, x) == CellState.ALIVE) {
+        if (board.getState(x, y) == CellState.ALIVE) {
             return 1;
         } else {
             return 0;
