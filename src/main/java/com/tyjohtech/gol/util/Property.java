@@ -32,6 +32,10 @@ public class Property<T> {
         return this.value;
     }
 
+    public boolean isPresent() {
+        return value != null;
+    }
+
     private void notifyListeners() {
         for (SimpleChangeListener<T> listener : listeners) {
             listener.valueChanged(this.value);
