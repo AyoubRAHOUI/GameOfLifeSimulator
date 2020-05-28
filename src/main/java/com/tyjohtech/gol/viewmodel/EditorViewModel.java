@@ -2,14 +2,12 @@ package com.tyjohtech.gol.viewmodel;
 
 import com.tyjohtech.gol.model.Board;
 import com.tyjohtech.gol.model.CellState;
-
-import java.util.LinkedList;
-import java.util.List;
+import com.tyjohtech.gol.util.Property;
 
 public class EditorViewModel {
 
-    private CellState drawMode = CellState.ALIVE;
-    private List<SimpleChangeListener<CellState>> drawModelListeners;
+    private Property<CellState> drawMode = new Property<>(CellState.ALIVE);
+
 
     private BoardViewModel boardViewModel;
     private Board editorBoard;
@@ -18,37 +16,26 @@ public class EditorViewModel {
     public EditorViewModel(BoardViewModel boardViewModel, Board initialBoard) {
         this.boardViewModel = boardViewModel;
         this.editorBoard = initialBoard;
-        this.drawModelListeners = new LinkedList<>();
     }
 
     public void onAppStateChanged(ApplicationState state) {
         if (state == ApplicationState.EDITING) {
             drawingEnabled = true;
-            this.boardViewModel.setBoard(editorBoard);
+            this.boardViewModel.getBoard().set(editorBoard);
         } else {
             drawingEnabled = false;
         }
     }
 
-    public void listenToDrawMode(SimpleChangeListener<CellState> listener) {
-        drawModelListeners.add(listener);
-    }
-
-    public void setDrawMode(CellState drawMode) {
-        this.drawMode = drawMode;
-        notifyDrawModeListeners();
-    }
-
-    private void notifyDrawModeListeners() {
-        for (SimpleChangeListener<CellState> drawModelListener : drawModelListeners) {
-            drawModelListener.valueChanged(drawMode);
-        }
-    }
 
     public void boardPressed(int simX, int simY) {
         if (drawingEnabled) {
-            this.editorBoard.setState(simX, simY, drawMode);
-            this.boardViewModel.setBoard(this.editorBoard);
+            this.editorBoard.setState(simX, simY, drawMode.get());
+            this.boardViewModel.getBoard().set(this.editorBoard);
         }
+    }
+
+    public Property<CellState> getDrawMode() {
+        return drawMode;
     }
 }
