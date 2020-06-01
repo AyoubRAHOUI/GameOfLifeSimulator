@@ -43,7 +43,7 @@ public class SimulationViewModel {
     }
 
 
-    public void doStep() {
+    private void doStep() {
         if (applicationViewModel.getApplicationState().get() != ApplicationState.SIMULATING) {
             applicationViewModel.getApplicationState().set(ApplicationState.SIMULATING);
         }
@@ -53,11 +53,11 @@ public class SimulationViewModel {
 
     }
 
-    public void start() {
+    private void start() {
         this.timeline.play();
     }
 
-    public void stop() {
+    private void stop() {
         this.timeline.stop();
     }
 
