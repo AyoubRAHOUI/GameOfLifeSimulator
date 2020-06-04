@@ -41,6 +41,7 @@ public class App extends Application {
 
         EditorState editorState = new EditorState(board);
         stateRegistry.registerState(EditorState.class, editorState);
+
         Editor editor = new Editor(editorState, commandExecutor);
         eventBus.listenFor(DrawModeEvent.class, editor::handle);
         eventBus.listenFor(BoardEvent.class, editor::handle);
