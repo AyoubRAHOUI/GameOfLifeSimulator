@@ -3,7 +3,6 @@ package com.bytesmyth.gol.logic.editor;
 import com.bytesmyth.app.command.CommandExecutor;
 import com.bytesmyth.gol.logic.simulator.SimulatorEvent;
 import com.bytesmyth.gol.model.CellPosition;
-import com.bytesmyth.gol.state.EditorState;
 
 public class Editor {
 

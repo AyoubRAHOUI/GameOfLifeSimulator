@@ -3,10 +3,9 @@ package com.bytesmyth.gol.logic.simulator;
 import com.bytesmyth.gol.ApplicationComponent;
 import com.bytesmyth.gol.ApplicationContext;
 import com.bytesmyth.gol.logic.board.BoardState;
+import com.bytesmyth.gol.logic.editor.EditorState;
 import com.bytesmyth.gol.model.Board;
 import com.bytesmyth.gol.model.BoundedBoard;
-import com.bytesmyth.gol.state.EditorState;
-import com.bytesmyth.gol.state.SimulatorState;
 
 public class SimulatorApplicationComponent implements ApplicationComponent {
 

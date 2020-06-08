@@ -1,4 +1,4 @@
-package com.bytesmyth.gol.state;
+package com.bytesmyth.gol.logic.simulator;
 
 import com.bytesmyth.app.observable.Property;
 import com.bytesmyth.gol.model.Board;

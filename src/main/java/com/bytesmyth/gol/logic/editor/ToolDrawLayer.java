@@ -1,7 +1,6 @@
 package com.bytesmyth.gol.logic.editor;
 
 import com.bytesmyth.gol.model.CellPosition;
-import com.bytesmyth.gol.state.EditorState;
 import com.bytesmyth.gol.view.AbstractDrawLayer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;

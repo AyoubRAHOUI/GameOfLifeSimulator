@@ -3,7 +3,6 @@ package com.bytesmyth.gol.logic.simulator;
 import com.bytesmyth.app.command.CommandExecutor;
 import com.bytesmyth.gol.model.Simulation;
 import com.bytesmyth.gol.model.StandardRule;
-import com.bytesmyth.gol.state.SimulatorState;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;

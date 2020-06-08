@@ -6,7 +6,6 @@ import com.bytesmyth.gol.logic.board.BoardState;
 import com.bytesmyth.gol.logic.simulator.SimulatorEvent;
 import com.bytesmyth.gol.model.Board;
 import com.bytesmyth.gol.model.BoundedBoard;
-import com.bytesmyth.gol.state.EditorState;
 
 public class EditorApplicationComponent implements ApplicationComponent {
 
