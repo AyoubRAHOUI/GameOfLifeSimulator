@@ -3,6 +3,7 @@ package com.bytesmyth.gol;
 import com.bytesmyth.app.command.CommandExecutor;
 import com.bytesmyth.app.event.EventBus;
 import com.bytesmyth.app.state.StateRegistry;
+import com.bytesmyth.gol.logic.board.BoardApplicationComponent;
 import com.bytesmyth.gol.logic.editor.EditorApplicationComponent;
 import com.bytesmyth.gol.logic.simulator.SimulatorApplicationComponent;
 import com.bytesmyth.gol.view.MainView;
@@ -23,8 +24,6 @@ public class App2 extends Application {
 
 
         MainView mainView = new MainView(eventBus);
-//        mainView.setTop(toolbar);
-//        mainView.setCenter(simulationCanvas);
 //        mainView.setBottom(infoBar);
 
         ApplicationContext context = new ApplicationContext(eventBus, commandExecutor, stateRegistry, mainView, 20, 12);
@@ -32,6 +31,7 @@ public class App2 extends Application {
         List<ApplicationComponent> components = new LinkedList<>();
         components.add(new EditorApplicationComponent());
         components.add(new SimulatorApplicationComponent());
+        components.add(new BoardApplicationComponent());
 
         for (ApplicationComponent component : components) {
             component.initState(context);

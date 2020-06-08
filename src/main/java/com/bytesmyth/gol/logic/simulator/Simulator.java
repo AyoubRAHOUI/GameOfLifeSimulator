@@ -1,8 +1,6 @@
 package com.bytesmyth.gol.logic.simulator;
 
 import com.bytesmyth.app.command.CommandExecutor;
-import com.bytesmyth.gol.logic.ApplicationState;
-import com.bytesmyth.gol.logic.ApplicationStateManager;
 import com.bytesmyth.gol.model.Simulation;
 import com.bytesmyth.gol.model.StandardRule;
 import com.bytesmyth.gol.state.SimulatorState;
@@ -13,15 +11,13 @@ import javafx.util.Duration;
 public class Simulator {
 
     private Timeline timeline;
-    private ApplicationStateManager applicationStateManager;
     private Simulation simulation;
 
     private SimulatorState state;
     private CommandExecutor commandExecutor;
     private boolean reset = true;
 
-    public Simulator(ApplicationStateManager applicationStateManager, SimulatorState state, CommandExecutor commandExecutor) {
-        this.applicationStateManager = applicationStateManager;
+    public Simulator(SimulatorState state, CommandExecutor commandExecutor) {
         this.state = state;
         this.commandExecutor = commandExecutor;
 
@@ -52,7 +48,7 @@ public class Simulator {
         if (reset) {
             reset = false;
             this.simulation = new Simulation(state.getBoard().get(), new StandardRule());
-            applicationStateManager.getApplicationState().set(ApplicationState.SIMULATING);
+            this.state.getSimulating().set(true);
         }
 
         this.simulation.step();
@@ -71,7 +67,7 @@ public class Simulator {
 
     private void reset() {
         reset = true;
-        this.applicationStateManager.getApplicationState().set(ApplicationState.EDITING);
+        this.state.getSimulating().set(false);
     }
 
 }

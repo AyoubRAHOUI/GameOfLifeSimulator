@@ -1,7 +1,7 @@
 package com.bytesmyth.gol.logic.editor;
 
 import com.bytesmyth.app.command.CommandExecutor;
-import com.bytesmyth.gol.logic.ApplicationState;
+import com.bytesmyth.gol.logic.simulator.SimulatorEvent;
 import com.bytesmyth.gol.model.CellPosition;
 import com.bytesmyth.gol.state.EditorState;
 
@@ -33,10 +33,10 @@ public class Editor {
         }
     }
 
-    public void onAppStateChanged(ApplicationState state) {
-        if (state == ApplicationState.EDITING) {
+    public void handleSimulatorEven(SimulatorEvent event) {
+        if (event.getEventType() == SimulatorEvent.Type.RESET) {
             drawingEnabled = true;
-        } else {
+        } else if (event.getEventType() == SimulatorEvent.Type.START || event.getEventType() == SimulatorEvent.Type.STEP) {
             drawingEnabled = false;
         }
     }

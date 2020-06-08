@@ -8,7 +8,13 @@ import com.bytesmyth.gol.model.BoundedBoard;
 public class BoardApplicationComponent implements ApplicationComponent {
     @Override
     public void initComponent(ApplicationContext context) {
+        BoardState state = context.getStateRegistry().getState(BoardState.class);
 
+        BoardDrawLayer boardDrawLayer = new BoardDrawLayer(state);
+        GridDrawLayer gridDrawLayer = new GridDrawLayer(state);
+
+        context.getMainView().addDrawLayer(boardDrawLayer);
+        context.getMainView().addDrawLayer(gridDrawLayer);
     }
 
     @Override
@@ -16,6 +22,5 @@ public class BoardApplicationComponent implements ApplicationComponent {
         Board board = new BoundedBoard(context.getBoardWidth(), context.getBoardHeight());
         BoardState boardState = new BoardState(board);
         context.getStateRegistry().registerState(BoardState.class, boardState);
-
     }
 }
